@@ -1,0 +1,37 @@
+#!/bin/bash
+
+foo=bar
+
+function f1 ()
+{
+  echo "$foo"
+}
+
+function f2 ()
+{
+  local foo=baz
+  f1 # prints 'baz'
+}
+
+f2
+
+#!/bin/bash
+
+function f ()
+{
+  if [[ "$1" == 'yes' ]] ; then
+    local foo
+  fi
+  foo=baz
+}
+
+foo=bar
+f yes # modifies a localized $foo, so has no effect
+echo "$foo" # prints 'bar'
+f # modifies the non-localized $foo, setting it to 'baz'
+echo "$foo" # prints 'baz'
+
+will actually print
+
+bar
+baz
