@@ -1,0 +1,29 @@
+$number = Get-Random -Minimum 1 -Maximum 10
+do {
+  $guess = Read-Host -Prompt "What's your guess?"
+  if ($guess -lt $number) {
+    Write-Output 'Too low!'
+  }
+  elseif ($guess -gt $number) {
+    Write-Output 'Too high!'
+  }
+}
+until ($guess -eq $number)
+
+While loop
+$date = Get-Date -Date 'November 22'
+while ($date.DayOfWeek -ne 'Thursday') {
+  $date = $date.AddDays(1)
+}
+Write-Output $date
+
+$number = Get-Random -Minimum 1 -Maximum 10
+do {
+  $guess = Read-Host -Prompt "What's your guess?"
+  if ($guess -lt $number) {
+    Write-Output 'Too low!'
+  } elseif ($guess -gt $number) {
+    Write-Output 'Too high!'
+  }
+}
+while ($guess -ne $number)
